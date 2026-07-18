@@ -9,7 +9,7 @@
     "PixelDreamStudios"
   ],
   "contact": {},
-  "license": "ARR",
+  "license": "MIT",
   "icon": "assets/perplayerquests/icon.png",
   "environment": "*",
   "entrypoints": {

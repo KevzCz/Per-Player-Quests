@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
 #issueTrackerURL = ""
-license = "ARR"
+license = "MIT"
 
 [[mods]]
 modId = "perplayerquests"
