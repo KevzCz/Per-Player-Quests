@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "perplayerquests",
+  "version": "${version}",
+  "name": "PerPlayerQuests",
+  "description": "Adds per-player and server-unique progression modes to FTB Quests.",
+  "authors": [
+    "KevzCz",
+    "PixelDreamStudios"
+  ],
+  "contact": {},
+  "license": "ARR",
+  "icon": "assets/perplayerquests/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.pixeldreamstudios.perplayerquests.fabric.PerPlayerQuestsFabric"
+    ],
+    "client": [
+      "net.pixeldreamstudios.perplayerquests.fabric.client.PerPlayerQuestsFabricClient"
+    ]
+  },
+  "mixins": [
+    "perplayerquests.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "architectury": ">=13.0.8",
+    "fabric-api": "*",
+    "ftbquests": "*",
+    "ftblibrary": "*",
+    "ftbteams": "*"
+  }
+}

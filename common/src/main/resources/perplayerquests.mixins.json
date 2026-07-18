@@ -1,0 +1,37 @@
+{
+  "required": true,
+  "package": "net.pixeldreamstudios.perplayerquests.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "client.QuestScreenMenuMixin",
+    "client.UniqueTooltipMixin",
+    "client.EditModeTooltipMixin$OnQuest",
+    "client.EditModeTooltipMixin$OnTask",
+    "client.accessor.QuestScreenAccessor",
+    "client.ChapterContextMenuMixin",
+    "client.SettingsMenuMixin",
+    "client.RosterTooltipMixin$OnQuest",
+    "client.RosterTooltipMixin$OnTask"
+  ],
+  "mixins": [
+    "PerPlayerTeamDataMixin",
+    "PerPlayerTaskExtension",
+    "PerPlayerQuestExtension",
+    "ProgressGateMixin",
+    "PerPlayerNotifyMixin",
+    "PerPlayerDepCacheMixin",
+    "UniqueQuestExtension",
+    "UniqueQuestVisibilityMixin",
+    "UniqueClaimLockMixin",
+    "ServerGlobalQuestExtension",
+    "TeamDeletionCleanupMixin",
+    "PerPlayerExclusivityMixin",
+    "PerPlayerRepeatMixin",
+    "PerPlayerClaimContextMixin",
+    "SubmitTaskContextMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
