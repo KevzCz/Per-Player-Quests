@@ -22,7 +22,7 @@ public abstract class ChapterContextMenuMixin {
             target = "Ldev/ftb/mods/ftbquests/client/gui/ContextMenuBuilder;openContextMenu(Ldev/ftb/mods/ftblibrary/ui/BaseScreen;)V"),
             remap = false)
     private void ppq$addResetChapterEntry(ContextMenuBuilder builder, BaseScreen screen) {
-        builder.insertAtBottom(List.<ContextMenuItem>of(
+        builder.insertAtBottom(List.of(
                 ContextMenuItem.SEPARATOR,
                 PerPlayerAdminMenu.chapterEntry(chapter)
         )).openContextMenu(screen);

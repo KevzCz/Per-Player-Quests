@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = dev.ftb.mods.ftbquests.net.SubmitTaskMessage.class, remap = false)
+@Mixin(value = SubmitTaskMessage.class, remap = false)
 public abstract class SubmitTaskContextMixin {
 
     @Inject(method = "lambda$handle$1", at = @At("HEAD"), cancellable = true, remap = false)

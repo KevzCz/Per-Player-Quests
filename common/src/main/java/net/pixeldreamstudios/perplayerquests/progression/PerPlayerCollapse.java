@@ -4,6 +4,7 @@ import dev.ftb.mods.ftbquests.quest.Excludable;
 import dev.ftb.mods.ftbquests.quest.QuestObject;
 import dev.ftb.mods.ftbquests.quest.TeamData;
 import dev.ftb.mods.ftbteams.api.FTBTeamsAPI;
+import dev.ftb.mods.ftbteams.api.Team;
 import dev.ftb.mods.ftbteams.api.client.KnownClientPlayer;
 import net.minecraft.server.level.ServerPlayer;
 import net.pixeldreamstudios.perplayerquests.api.IPerPlayerObject;
@@ -118,7 +119,7 @@ public final class PerPlayerCollapse {
 
     private static Set<UUID> allTeamMembers(TeamData teamData) {
         return FTBTeamsAPI.api().getManager().getTeamByID(teamData.getTeamId())
-                .map(dev.ftb.mods.ftbteams.api.Team::getMembers)
+                .map(Team::getMembers)
                 .orElse(null);
     }
 

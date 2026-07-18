@@ -1,6 +1,7 @@
 package net.pixeldreamstudios.perplayerquests.progression;
 
 import dev.ftb.mods.ftbquests.quest.QuestObjectBase;
+import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.TeamData;
 import dev.ftb.mods.ftbteams.api.FTBTeamsAPI;
 import net.minecraft.ChatFormatting;
@@ -54,7 +55,7 @@ public final class PerPlayerRoster {
     private static String resolveName(TeamData teamData, UUID id) {
         boolean serverSide = teamData.getFile() != null && teamData.getFile().isServerSide();
         if (serverSide) {
-            MinecraftServer server = teamData.getFile() instanceof dev.ftb.mods.ftbquests.quest.ServerQuestFile sqf
+            MinecraftServer server = teamData.getFile() instanceof ServerQuestFile sqf
                     ? sqf.server : null;
             if (server != null) {
                 var player = server.getPlayerList().getPlayer(id);

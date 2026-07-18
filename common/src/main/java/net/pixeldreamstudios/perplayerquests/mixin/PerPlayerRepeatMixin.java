@@ -2,6 +2,7 @@ package net.pixeldreamstudios.perplayerquests.mixin;
 
 import dev.ftb.mods.ftbquests.quest.Quest;
 import dev.ftb.mods.ftbquests.quest.TeamData;
+import dev.ftb.mods.ftbquests.quest.reward.Reward;
 import it.unimi.dsi.fastutil.longs.Long2IntMap;
 import it.unimi.dsi.fastutil.longs.Long2LongMap;
 import net.pixeldreamstudios.perplayerquests.api.IPerPlayerObject;
@@ -78,7 +79,7 @@ public abstract class PerPlayerRepeatMixin {
             remap = false)
     private int ppq$redirectCompletionCountMerge(Long2IntMap map, long questId, int value,
                                                   BiFunction<? super Integer, ? super Integer, ? extends Integer> fn,
-                                                  UUID player, dev.ftb.mods.ftbquests.quest.reward.Reward reward, long date) {
+                                                  UUID player, Reward reward, long date) {
         Quest quest = reward.getQuest();
         if (ppq$perPlayer(quest) && (Object) this instanceof IPerPlayerStore store) {
             int updated = store.mqt$getPerPlayerCompletionCount(player, questId) + value;
@@ -95,7 +96,7 @@ public abstract class PerPlayerRepeatMixin {
             at = @At(value = "INVOKE", target = "Lit/unimi/dsi/fastutil/longs/Long2LongMap;put(JJ)J"),
             remap = false)
     private long ppq$redirectRepeatableTimePut(Long2LongMap map, long questId, long when,
-                                                UUID player, dev.ftb.mods.ftbquests.quest.reward.Reward reward, long date) {
+                                                UUID player, Reward reward, long date) {
         Quest quest = reward.getQuest();
         if (ppq$perPlayer(quest) && (Object) this instanceof IPerPlayerStore store) {
             store.mqt$setPerPlayerRepeatableTime(player, questId, when);

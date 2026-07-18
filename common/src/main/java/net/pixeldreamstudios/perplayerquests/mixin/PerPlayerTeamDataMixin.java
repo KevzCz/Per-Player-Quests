@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -84,7 +85,7 @@ public abstract class PerPlayerTeamDataMixin implements IPerPlayerStore {
     }
 
     @Unique
-    private final java.util.ArrayDeque<UUID> ppq$forcedActorStack = new java.util.ArrayDeque<>();
+    private final ArrayDeque<UUID> ppq$forcedActorStack = new ArrayDeque<>();
 
     @Override
     public void ppq$beginForceActorDeps(UUID actor) {
