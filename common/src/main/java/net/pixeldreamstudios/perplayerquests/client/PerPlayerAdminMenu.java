@@ -1,6 +1,6 @@
 package net.pixeldreamstudios.perplayerquests.client;
 
-import dev.architectury.networking.NetworkManager;
+import net.pixeldreamstudios.perplayerquests.network.NetworkHelper;
 import dev.ftb.mods.ftblibrary.icon.Icons;
 import dev.ftb.mods.ftblibrary.ui.ContextMenuItem;
 import dev.ftb.mods.ftbquests.quest.QuestObjectBase;
@@ -40,7 +40,7 @@ public final class PerPlayerAdminMenu {
         return new ContextMenuItem(
                 Component.translatable("perplayerquests.unique.menu.release"),
                 Icons.CANCEL,
-                b -> NetworkManager.sendToServer(new PerPlayerAdminPacket(
+                b -> NetworkHelper.sendToServer(new PerPlayerAdminPacket(
                         PerPlayerAdminPacket.Action.RELEASE_UNIQUE, new UUID(0L, 0L), object.id)));
     }
 
@@ -48,7 +48,7 @@ public final class PerPlayerAdminMenu {
         return new ContextMenuItem(
                 Component.translatable("perplayerquests.server_global.menu.reset"),
                 Icons.REFRESH,
-                b -> NetworkManager.sendToServer(new PerPlayerAdminPacket(
+                b -> NetworkHelper.sendToServer(new PerPlayerAdminPacket(
                         PerPlayerAdminPacket.Action.RESET_GLOBAL, new UUID(0L, 0L), object.id)));
     }
 }

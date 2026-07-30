@@ -1,5 +1,6 @@
 package net.pixeldreamstudios.perplayerquests.mixin.client;
 
+import dev.ftb.mods.ftblibrary.ui.Button;
 import dev.ftb.mods.ftblibrary.ui.ContextMenuItem;
 import dev.ftb.mods.ftbquests.client.gui.quests.QuestScreen;
 import dev.ftb.mods.ftbquests.quest.Movable;
@@ -22,7 +23,7 @@ import java.util.List;
 public abstract class QuestScreenMenuMixin {
 
     @Inject(method = "addObjectMenuItems", at = @At("TAIL"), remap = false)
-    private void mqt$addPerPlayerMenu(List<ContextMenuItem> contextMenu, Runnable gui,
+    private void mqt$addPerPlayerMenu(List<ContextMenuItem> contextMenu, Button button, Runnable gui,
                                       QuestObjectBase object, Movable deletionFocus, CallbackInfo ci) {
         if (mqt$isPerPlayer(object)) {
             contextMenu.add(ContextMenuItem.SEPARATOR);

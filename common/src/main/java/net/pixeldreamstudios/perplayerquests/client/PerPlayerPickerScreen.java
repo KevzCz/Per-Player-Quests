@@ -1,6 +1,6 @@
 package net.pixeldreamstudios.perplayerquests.client;
 
-import dev.architectury.networking.NetworkManager;
+import net.pixeldreamstudios.perplayerquests.network.NetworkHelper;
 import dev.ftb.mods.ftblibrary.config.ConfigCallback;
 import dev.ftb.mods.ftblibrary.icon.Color4I;
 import dev.ftb.mods.ftblibrary.icon.Icon;
@@ -112,13 +112,13 @@ public class PerPlayerPickerScreen extends AbstractThreePanelScreen<PerPlayerPic
 
     @Override
     public boolean mouseScrolled(double scroll) {
-        if (listPanel != null && listPanel.scrollPanel(scroll)) return true;
+        if (listPanel != null && listPanel.scrollPanel(0, scroll)) return true;
         return super.mouseScrolled(scroll);
     }
 
     private void send(PerPlayerAdminPacket.Action action, UUID target) {
         long objId = object == null ? 0L : object.id;
-        NetworkManager.sendToServer(new PerPlayerAdminPacket(action, target, objId));
+        NetworkHelper.sendToServer(new PerPlayerAdminPacket(action, target, objId));
         closeGui(true);
     }
 
@@ -218,7 +218,7 @@ public class PerPlayerPickerScreen extends AbstractThreePanelScreen<PerPlayerPic
 
         @Override
         public boolean mouseScrolled(double scroll) {
-            return scrollPanel(scroll) || super.mouseScrolled(scroll);
+            return scrollPanel(0, scroll) || super.mouseScrolled(scroll);
         }
     }
 

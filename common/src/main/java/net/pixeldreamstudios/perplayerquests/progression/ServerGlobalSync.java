@@ -1,6 +1,6 @@
 package net.pixeldreamstudios.perplayerquests.progression;
 
-import dev.architectury.networking.NetworkManager;
+import net.pixeldreamstudios.perplayerquests.network.NetworkHelper;
 import dev.ftb.mods.ftbquests.quest.BaseQuestFile;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.TeamData;
@@ -25,12 +25,12 @@ public final class ServerGlobalSync {
     public static void broadcastAll(MinecraftServer server) {
         ServerGlobalSyncPacket packet = build();
         for (ServerPlayer p : server.getPlayerList().getPlayers()) {
-            NetworkManager.sendToPlayer(p, packet);
+            NetworkHelper.sendToPlayer(p, packet);
         }
     }
 
     public static void sendTo(ServerPlayer player) {
-        NetworkManager.sendToPlayer(player, build());
+        NetworkHelper.sendToPlayer(player, build());
     }
 
     private static ServerGlobalSyncPacket build() {

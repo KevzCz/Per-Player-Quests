@@ -1,6 +1,6 @@
 package net.pixeldreamstudios.perplayerquests.progression;
 
-import dev.architectury.networking.NetworkManager;
+import net.pixeldreamstudios.perplayerquests.network.NetworkHelper;
 import dev.ftb.mods.ftbquests.quest.QuestObjectBase;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import net.minecraft.server.MinecraftServer;
@@ -20,13 +20,13 @@ public final class UniqueSync {
         if (server == null) return;
         UniqueClaimSyncPacket packet = buildPacket(server);
         for (ServerPlayer p : server.getPlayerList().getPlayers()) {
-            NetworkManager.sendToPlayer(p, packet);
+            NetworkHelper.sendToPlayer(p, packet);
         }
     }
 
     public static void sendTo(ServerPlayer player) {
         if (player == null || player.server == null) return;
-        NetworkManager.sendToPlayer(player, buildPacket(player.server));
+        NetworkHelper.sendToPlayer(player, buildPacket(player.server));
     }
 
     public static void broadcastClaim(MinecraftServer server, long questId, UUID owner) {

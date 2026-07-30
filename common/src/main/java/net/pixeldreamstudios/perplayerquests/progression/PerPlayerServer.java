@@ -1,6 +1,6 @@
 package net.pixeldreamstudios.perplayerquests.progression;
 
-import dev.architectury.networking.NetworkManager;
+import net.pixeldreamstudios.perplayerquests.network.NetworkHelper;
 import dev.ftb.mods.ftbquests.quest.Quest;
 import dev.ftb.mods.ftbquests.quest.TeamData;
 import dev.ftb.mods.ftbquests.quest.task.Task;
@@ -83,7 +83,7 @@ public final class PerPlayerServer {
 
         long[] startedArr = started.stream().mapToLong(Long::longValue).toArray();
         long[] completedArr = completed.stream().mapToLong(Long::longValue).toArray();
-        NetworkManager.sendToPlayer(player, new PerPlayerSyncPacket(taskProgress, startedArr, completedArr, repeatState));
+        NetworkHelper.sendToPlayer(player, new PerPlayerSyncPacket(taskProgress, startedArr, completedArr, repeatState));
     }
 
     private static ServerPlayer onlineMember(TeamData teamData, UUID actor) {
@@ -129,7 +129,7 @@ public final class PerPlayerServer {
 
         PerPlayerTeamSyncPacket packet = new PerPlayerTeamSyncPacket(entries, repeatEntries);
         for (ServerPlayer p : recipients) {
-            NetworkManager.sendToPlayer(p, packet);
+            NetworkHelper.sendToPlayer(p, packet);
         }
     }
 
