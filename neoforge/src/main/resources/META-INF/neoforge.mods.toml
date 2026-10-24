@@ -37,7 +37,7 @@ side = "BOTH"
 [[dependencies.perplayerquests]]
 modId = "ftbquests"
 type = "required"
-versionRange = "[2101,)"
+versionRange = "[2101.1.37,)"
 ordering = "AFTER"
 side = "BOTH"
 

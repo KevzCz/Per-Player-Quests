@@ -1,8 +1,10 @@
 package net.pixeldreamstudios.perplayerquests.progression;
 
+import dev.architectury.event.EventResult;
 import dev.ftb.mods.ftbquests.quest.Quest;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.TeamData;
+import dev.ftb.mods.ftbquests.quest.reward.Reward;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
@@ -25,14 +27,19 @@ public final class UniqueGate {
     }
 
     public static boolean isLockedForActor(TeamData teamData, Quest quest) {
+        return isLockedFor(quest, PerPlayerActor.resolve(teamData));
+    }
+
+    public static boolean isLockedFor(Quest quest, UUID actor) {
         if (!isUnique(quest)) return false;
-        if (UniqueInheritance.inherits(quest)) {
-            UUID owner = UniqueInheritance.owner(quest);
-            if (owner == null) return true;
-            UUID actor = PerPlayerActor.resolve(teamData);
-            return actor == null || !actor.equals(owner);
-        }
-        return UniqueClaims.isLockedForActor(teamData, quest.id);
+        boolean inherited = UniqueInheritance.inherits(quest);
+        UUID owner = inherited ? UniqueInheritance.owner(quest) : UniqueClaims.owner(quest.id);
+        if (owner == null) return inherited;
+        return actor == null || !actor.equals(owner);
+    }
+
+    public static EventResult onRewardClaim(Reward reward, ServerPlayer player) {
+        return isLockedFor(reward.getQuest(), player.getUUID()) ? EventResult.interruptFalse() : EventResult.pass();
     }
 
     public static boolean onProgressAttempt(TeamData teamData, Quest quest, UUID actor) {

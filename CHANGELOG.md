@@ -1,1 +1,2 @@
-Updated to latest version of FTB Quests
+- Updated for FTB Quests 2101.1.37
+- Rewards of a claimed unique quest can only be claimed by its owner, whichever way the claim comes in (auto-claim, commands, other mods)
